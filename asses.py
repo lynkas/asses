@@ -16,12 +16,12 @@ class an_ass:
         if ud == 'u':
             self.style='Style: '+ud+',Noto Sans CJK SC Medium,25,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,0,2,10,10,15,0\n'
             for p in content.split('\n'):
-                if p.split('0,0,0,,')[-1] and p.split('0,0,0,,')[-1].strip()!='-':
+                if p.split('0,0,0,,')[-1] and p.split('0,0,0,,')[-1].strip()!='-' and p.startswith('Dialogue'):
                     self.dialogues.append(p.replace('Default', ud, 1).replace('0,0,0,,', '0,0,0,,{\pos(193.0,278.0)}').strip())
         else:
             self.style='Style: '+ud+',Noto Sans CJK SC Medium,13,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,0,2,10,10,5,0\n'
             for p in content.split('\n'):
-                if p.split('0,0,0,,')[-1] and p.split('0,0,0,,')[-1].strip()!='-':
+                if p.split('0,0,0,,')[-1] and p.split('0,0,0,,')[-1].strip()!='-' and p.startswith('Dialogue'):
                     self.dialogues.append(p.replace('Default', ud, 1).replace('0,0,0,,', '0,0,0,,{\pos(193.0,288.0)}').strip())
 
 
@@ -46,7 +46,7 @@ neck='''[Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 '''
 
-final=head+a.style+b.style+neck+'\n'.join(a.dialogues)+'\n'.join(b.dialogues)
+final=head+a.style+b.style+neck+'\n'.join(a.dialogues)+'\n'+'\n'.join(b.dialogues)
 
 with open(u+".COM.ass", "w",encoding='utf-8') as text_file:
     print(final, file=text_file)
