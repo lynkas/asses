@@ -186,7 +186,6 @@ head='''[Script Info]
 ScriptType: v4.00+
 PlayResX: 384
 PlayResY: 288
-ScaledBorderAndShadow: no
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -205,3 +204,4 @@ final=head+a.style+b.style+neck+'\n'.join(nf)
 
 with open(u+".COM.ass", "w",encoding='utf-8') as text_file:
     print(final, file=text_file)
+
